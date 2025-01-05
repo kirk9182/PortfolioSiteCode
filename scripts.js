@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <title>Portfolio Desktop</title>
+    <link rel="icon" type="image/png" href="./icons/computerIcon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="desktop">
+    <div class="icon" onclick="openWindow('projects')">
+        <img src="./icons/computerIcon.png" alt="Projects">
+        <span>Projects</span>
+    </div>
+    <div class="icon" onclick="openWindow('about')">
+        <img src="./icons/bookicon.png" alt="about icon">
+        <span>About Me</span>
+    </div>
+    <div class="icon" onclick="openWindow('work')">
+        <img src="./icons/workicon.png" alt="work icon">
+        <span>Work Experience</span>
+    </div>
+    <div class="icon" onclick="openWindow('funguy')">
+        <img src="./icons/bigFunguy.ico" alt="work icon">
+        <span>Funguy</span>
+    </div>
+    
+<!-- Terminal Icon -->
+<div class="icon" onclick="openTerminalWindow()">
+    <img src="./icons/terminal_icon.png" alt="terminal icon">
+    <span>Terminal</span>
+</div>
+
+<!-- Terminal Window (initially hidden) -->
+<div id="terminal" class="terminal-window" tabindex="0" onkeydown="handleKeyPress(event)">
+    <div class="terminal-header">
+        <span>Terminal</span>
+        <button class="close-btn" onclick="closeTerminalWindow()">&#10005;</button>
+    </div>
+    <div id="terminal-output">
+         <span class="prompt">someuser@w95$ </span><span id="terminal-input" class="terminal-input"></span><span class="cursor">&nbsp;</span>
+    </div>
+</div>
+
+
+
+    <div class="icon">
+    <a href="https://skellysearch.dev/" target="_blank" rel="noopener noreferrer">
+        <img src="./icons/skullflower.png" alt="Skelly Search icon">
+        <span>Skelly Search</span>
+    </a>
+    </div>
+
+    <div class="icon">
+    <a href="https://www.linkedin.com/in/REDACTED-REDACTED-348216260" target="_blank" rel="noopener noreferrer">
+        <img src="./icons/linkedinicon.png" alt="Linkedin icon">
+        <span>LinkedIn</span>
+    </a>
+    </div>
+    <!-- Additional icons follow the same pattern -->
+</div>
+
+    <!-- Taskbar -->
+<div id="taskbar">
+    <button class="start-button">
+        <div class="icon" onclick="openWindow('start')">
+            <img src="./icons/staricon.png" alt="start icon">
+        </div>
+    </button>
+<div class="taskbar">
+    <button class="time-button">
+    <div id="time-display" class="taskbar-time"></div>
+    </button>
+    </div>
+</div>
+
+    <!-- Windows -->
+        <div id="start" class="window" style="display:none;">
+        <div class="title-bar">
+            <span class="title">Welcome Page</span>
+            <button class="close-btn" onclick="closeWindow('start')">&#10005;</button>
+        </div>
+        <div class="window-content">
+            <h3>
+            Welcome to my portfolio!
+            </h3>
+            <p>
+            I'm thrilled to have you explore my digital space where creativity meets functionality. Here, you'll find a curated collection of my projects, experiences, and the journey that has shaped my professional path. Dive in and discover the work that I am passionate about, the technologies I excel in, and the innovative solutions I've crafted. Whether you're here for collaboration, to hire, or just to satisfy your curiosity, I hope you find inspiration and insight. Thank you for stopping by, and I look forward to connecting with you!
+            </p>
+            <!-- More content here -->
+        </div>
+    </div>
+        <div id="about" class="window" style="display:none;">
+        <div class="title-bar">
+            <span class="title">About Me</span>
+            <button class="close-btn" onclick="closeWindow('about')">&#10005;</button>
+        </div>
+        <div class="window-content">
+            <p>
+                Hello,
+            </p>
+<p>
+    I'm REDACTED REDACTED, a Computer Science major with a specialization in cybersecurity, mathematics, and software development, maintaining a 3.5 GPA at Providence College. As a naturally curious person, my friends say I tend to question almost everything. I’ve always approached problems with skepticism and a drive to explore unconventional solutions. This mindset has led me to pursue innovative, real-world projects that reflect my commitment to impactful work.
+</p>
+<p>
+    My technical experience spans multiple domains, from creating RPG games in Java to projects with Linux, Raspberry Pi, and cybersecurity tools. These self-driven initiatives have honed my skills in Java, Python, C++, and Linux, highlighting my ability to transform ideas into practical applications.
+</p>
+<p>
+    In my recent role as a Security Engineering Intern at Tenable, I designed a web application to streamline customer data management using Google Apps Script, OAuth, and API integrations, supporting the sales team with an efficient interface. Additionally, I started to develop an image verification system as a research project, blending secure data practices with creative media validation solutions. On paper, the official study begins in my spring semester at Providence. 
+</p>
+<p>
+    Previously, as a Threat Intelligence Engineer Intern at ThreatQuotient, I contributed to a major community project by performing threat intelligence report validation, utility maintenance, and onboarding new members. This experience provided me with a deep understanding of the practical aspects of cybersecurity and teamwork in a professional setting.
+</p>
+<p>
+    Currently, I am expanding my knowledge in cloud technologies through independent study for AWS Cloud Practitioner and Solutions Architect Associate certifications. My involvement with the Digital Asset Association at Providence College keeps me engaged with the latest in cryptocurrency, blockchain, and digital assets. Recently, I completed a research paper on the intersection of philosophy, politics, energy, and cryptocurrency, demonstrating my drive to address complex, interdisciplinary issues.
+</p>
+<p>
+    With a strong foundation in technical skills, practical experience, and a unique approach to problem-solving, I am excited to bring my capabilities, creativity, and dedication to your organization.
+</p>
+<p>
+Best regards,
+</p>
+<p>
+REDACTED REDACTED
+</p>
+<p>
+    </div>
+
+    </div>
+
+
+    <div id="projects" class="window" style="display:none;">
+    <div class="title-bar">
+        <span class="title">Projects</span>
+        <button class="close-btn" onclick="closeWindow('projects')">&#10005;</button>
+    </div>
+    <div class="tab-container">
+        <button class="tablinks" onclick="openTab(event, 'raspberry')">Raspberry Pi</button>
+        <button class="tablinks" onclick="openTab(event, 'solidity')">Solidity</button>
+        <button class="tablinks" onclick="openTab(event, 'webdev')">WebDev</button>
+        <button class="tablinks" onclick="openTab(event, 'AI')">AI</button>
+        <!-- Other tabs here -->
+    </div>
+    <div id="raspberry" class="tabcontent">
+        <h3 class="tab-title">Raspberry Pi</h3> <!-- Bolded title for the tab content -->
+        <p> Some cool projects:</p>
+        <p> - Self-hosting my own meta search engine using Searx and Docker</p>
+        <p> - Hosting and creating a dark web website on Tor</p> 
+        <p> - Creating my own cyber deck with retropi custom controllers</p> 
+        <p> - Using ultrasonic sensors to calculate distance displayed on an I2C LCD screen in micro-python/circuit-pytho</p> 
+        <p> - Creating a bad USB to hack HID's on RPI0W and Pico.</p>
+        <p> - Setting up a minecraft server for friends</p>
+        <p> - Creating an image verification system using the Pi as the baseline device</p>
+       
+       <!-- Tab content -->
+    <video controls width="400">
+        <source src="./videos/price_ticker.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <video controls width="400">
+        <source src="./videos/picoticker.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    </div>
+    <div id="solidity" class="tabcontent">
+        <h3 class="tab-title">Solidity</h3> <!-- Bolded title for the tab content -->
+        <p>Smart Contract Development/Web3:</p>
+        <p> - I created an inscription minter on a few testnetworks. This makes it possible to inscribe arbitrary data on the blockchain.</p>
+        <p> - Image to ASCII converter with result able to be minted as an ERC-721.</p>
+        <p> - ERC-20 Development (memes) </p>
+        <!-- Tab content -->
+        <video controls width="400">
+        <source src="./videos/inscription_minter.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+        </video>
+    </div>
+    <div id="webdev" class="tabcontent">
+        <h3 class="tab-title">WebDev</h3> <!-- Bolded title for the tab content -->
+        <p>Some Web Development Projects: </p>
+        <p> - Frontend for image to ascii converter</p>
+        <p> - Shared paper on Money, Philosophy, energy and Cryptocurrency on my secondary website</p>
+        <p> - The web app I developed during my internship at Tenable
+        <p> - The website we are currently on!</p>
+        <!-- Tab content -->
+    </div>
+    <div id="AI" class="tabcontent">
+        <h3 class="tab-title">AI</h3> <!-- Bolded title for the tab content -->
+        <p>AI projects</p>
+        <p> - REDACTED's Curator is a chatbot here on this website in the bottom right corner. Ask it some questions about me or the role you are looking for.</p>
+        <p> - Card recognition using treys for a poker bot</p>
+        <p> - Coral.ai google usb stick with the raspberry pi for image recognition testing</p>
+        <p> - A* pathfinding integration into my game FUNGUY </p>
+        <img src="./images/pokerbot.png" alt="about icon">
+        
+    </div>
+    <!-- Repeat for other tabs and their contents -->
+</div>
+
+     <div id="work" class="window" style="display:none;">
+        <div class="title-bar">
+            <span class="title">Related Work Experience</span>
+            <button class="close-btn" onclick="closeWindow('work')">&#10005;</button>
+        </div>
+        <div class="window-content">
+            <p>
+            I recently completed a Security Engineering Internship at Tenable (Summer 2024), where I developed a web application using Google Apps Script, OAuth, and API integrations to streamline customer data management. This project, focused on enhancing post-sale support for the sales team, allowed me to merge technical skills with practical business needs. I was also given the opportunity to present my work at the QBR and final intern presentations which enhanced my communication skills.  
+            </p>
+            <p>
+            Previously, I served as a Threat Intelligence Engineer Intern at ThreatQuotient (Summer 2023 – Spring 2024), where I trained on the ThreatQ Threat Intelligence Platform. My responsibilities included validating threat intelligence reports, maintaining platform utilities, and onboarding new members as part of a large-scale community project involving over 100 companies. This role deepened my understanding of cybersecurity in a collaborative environment, working with over 50 open-source intelligence sources, RSS feeds, and unstructured data imports.
+            </p>
+
+            <!-- More content here -->
+        </div>
+        </div>
+
+    <div id="funguy" class="window" style="display:none;">
+        <div class="title-bar">
+            <span class="title">Funguy</span>
+            <button class="close-btn" onclick="closeWindow('funguy')">&#10005;</button>
+        </div>
+        <div class="window-content">
+            <p>When I started Funguy as a freshman I wanted to truly reflect my creativity and design something of my own no matter how challenging I knew it would be to create from scratch.</p>
+            <p>I learned how to code in java with zero prior experience. From object oriented programming to designing little 16 bit pixelart characters, I was able to bring the game to life.</p>
+             <img src="./images/funguy1.png" alt="Funguy" style="width: 400px; height: 250px;">
+             <img src="./images/funguy3.png" alt="Funguy" style="width: 400px; height: 250px;">
+            <!-- More content here -->
+        </div>
+    </div>
+
+<script src="./script.js"></script>
+<script>
+    window.embeddedChatbotConfig = {
+        chatbotId: "IP0PDR_TUmDaeR7iWOhOb",
+        domain: "www.chatbase.co"
+    }
+</script>
+<script
+    src="https://www.chatbase.co/embed.min.js"
+    chatbotId="IP0PDR_TUmDaeR7iWOhOb"
+    domain="www.chatbase.co"
+    defer>
+</script>
+</body>
+</html>
