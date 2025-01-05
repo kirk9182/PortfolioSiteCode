@@ -1,0 +1,339 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    background: teal; /* Windows 95 background color */
+    font-family: 'W95FA';
+    cursor: url('./icons/cursorFinal95-copy.png'), auto;
+}
+
+body::after{
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('./overlays/scanlinegif.gif') repeat;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.12;
+}
+
+#desktop {
+    /* Aligns the icons to the left side of the screen */
+    position: absolute;
+    left: 0;
+    top: 0; 
+}
+
+.icon {
+    /* Stack the icon image and label vertically and align left */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    margin: 5px; 
+    cursor: pointer;
+}
+
+.icon a {
+    display: flex; /* Using flexbox to control the layout */
+    flex-direction: column; /* Stack flex items vertically */
+    align-items: center; 
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit text color from parent */
+}
+
+.icon img {
+    width: 32px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 0px; 
+}
+
+.icon span {
+    text-align: center; 
+    color: rgb(238, 238, 238); 
+    font-size: 12px; 
+    margin-bottom: 10px;
+    margin-left: 2px;
+}
+
+
+#taskbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    background: #c0c0c0; /* Taskbar color */
+    line-height: 20px; /* Taskbar height */
+    font-size: 16px;
+  	padding: 5px 10px;
+  	border: 1px solid gray;
+  	border-top: 3px solid #404040;
+  	border-right: 3px solid #404040;
+  	box-shadow: 5px 5px 0 #1c1c1c;
+  	cursor: pointer;
+  	transition: all 0.2s ease-in-out;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.taskbar-time {
+    color: black; /* Time text color */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Change to match your design */
+    font-size: 16px;
+}
+.taskbar-right {
+  display: absolute;
+  align-items: center;
+  padding-right: 85px; /* Adjust this value to create space from the right edge of the screen */
+}
+/* ... (other styles) ... */
+
+.window {
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    border: 2px solid rgb(40, 40, 40);
+    background: #c0c0c0; /* Window color */
+    z-index: 10; /* Make sure it's above other items */
+    display: none; /* Hide initially */
+    width: 250px; /* Set the width of the window */
+    height: 300px; /* Set the height of the window */
+    min-width: 400px; /* Or any other appropriate size */
+    box-shadow: 3px 3px 0px #000; /* Adds the classic Windows 95 shadow */
+    max-width: 700px;
+    min-height: 250px;
+    max-height: 700px;
+}
+.window-content {
+  background: #c0c0c0; /* Windows 95 content area background color */
+  color: rgb(50, 50, 50); /* Text color */
+  padding: 10px; /* Padding around the content text */
+  margin-top: 2px; /* To separate from the title bar */
+  overflow-y: auto;
+}
+
+.title-bar {
+  background: rgb(1, 1, 119);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 6px; /* Adjust padding to match your design */
+  cursor: move; /* Indicates the element is movable */
+}
+
+.close-btn {
+  background: rgb(217, 0, 0);
+  border: 1px solid rgb(40, 40, 40);
+  color: white;
+  cursor: pointer;
+  font-size: 1.5rem; /* Adjust size as needed */
+  padding: 0 5px;
+  margin-left: auto; /* Push the button to the right */
+}
+
+
+.title-bar .title {
+    margin: 0;
+    font-weight: bold;
+}
+
+.resizable {
+  resize: both; /* Enables resizing */
+  overflow: auto; /* Ensures content within the div is scrollable if larger than the container */
+}
+.start-button {
+  padding: 0px;
+  cursor: pointer;
+  display: flex;
+  background-color: #e8e8e8;
+  color: #1c1c1c;
+  font-size: 1.2em;
+  border: 1px solid gray;
+  border-bottom: 2px solid #404040;
+  border-right: 2px solid #404040;
+  box-shadow: 3px 3px 0 #1c1c1c;
+  transition: all 0.2s ease-in-out;
+}
+.start-button:hover {
+  padding: 0px;
+  cursor: pointer;
+  display: flex;
+  background-color: #e8e8e8;
+  border-bottom: 0;
+  border-right: 0;
+  box-shadow: 2px 2px 0 #1c1c1c;
+}
+.chatbot-button {
+  padding: 0px;
+  cursor: pointer;
+  display: flex;
+  background-color: #e8e8e8;
+  color: #1c1c1c;
+  font-size: 1.2em;
+  border: 1px solid gray;
+  border-bottom: 2px solid #404040;
+  border-right: 2px solid #404040;
+  box-shadow: 3px 3px 0 #1c1c1c;
+  transition: all 0.2s ease-in-out;
+}
+.chatbot-button:hover {
+  padding: 0px;
+  cursor: pointer;
+  display: flex;
+  background-color: #e8e8e8;
+  border-bottom: 0;
+  border-right: 0;
+  box-shadow: 2px 2px 0 #1c1c1c;
+}
+.time-button {
+  padding: 4px 10px;
+  margin-right: 100px;
+  cursor: pointer;
+  display: flex;
+  background-color: #e8e8e8;
+  color: #1c1c1c;
+  font-size: 1.2em;
+  border: 1px solid gray;
+  border-bottom: 1.5px solid #404040;
+  border-right: 1.5px solid #404040;
+  box-shadow: 2px 2px 0 #1c1c1c;
+  transition: all 0.2s ease-in-out;
+}
+.time-button:hover {
+  padding: 4px 10px;
+  cursor: pointer;
+  display: flex;
+  background-color: #e8e8e8;
+  border-bottom: 0;
+  border-right: 0;
+  box-shadow: 1.5px 1.5px 0 #1c1c1c;
+}
+
+/* Can apply this class to the elements you want to be resizable */
+#projects, #about, #work {
+  border: 1px solid black; 
+}
+/* Style of  tab buttons */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 7px 8px;
+  transition: 0.3s;
+  font-size: 12px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+.tab-title {
+  font-weight: bold;
+  margin-top: 0;
+  font-size: 1.2em; /* Adjust the font size as needed */
+  padding-bottom: 12px; /* Space between title and the description */
+}
+
+.tab-container {
+  display: flex;
+  justify-content: flex-start; /* Align tabs to the start */
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.tablinks {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  background-color: inherit;
+  color: #1c1c1c;
+  font-size: 14px;
+  border: 1px solid gray;
+  border-bottom: 2px solid #404040;
+  border-right: 2px solid #404040;
+  box-shadow: 3px 3px 0 #1c1c1c;
+  transition: all 0.2s ease-in-out;
+}
+.tablinks:hover {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  background-color: inherit;
+  border-bottom: 0;
+  border-right: 0;
+  box-shadow: 2px 2px 0 #1c1c1c;
+}
+
+.tabcontent {
+  margin: 8px;
+  display: none; /* Hide all by default */
+  font-size: 1em;
+  color: rgb(30, 30, 30);
+}
+
+/* When a tab is active */
+.tabcontent.active {
+  display: block; /* Show the active tab content */
+  font-size: 1.2em;
+  color: rgb(30, 30, 30);
+}
+
+/* Terminal Window Styles */
+.terminal-window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 300px;
+    background-color: black;
+    color: limegreen;
+    text-shadow: 0px 0px 1px limegreen;
+    border: 1px solid #333;
+    z-index: 1000; /* Make sure it's above other elements */
+    display: none; /* Initially not displayed */
+    resize: both; /* Allow resizing */
+    overflow: auto; /* Add scrollbars if wnna */
+    /* Add more styles for title bar:positioning etc. */
+}
+
+.terminal-header {
+    background-color: #222;
+    color: white;
+    padding: 5px;
+    cursor: move; /* Indicate the header draggable */
+}
+.terminal-input {
+    display: inline;
+    white-space: pre;
+}
+.terminal-window:focus {
+    outline: none; /* Removes the default focus outline */
+}
+
+.cursor {
+    display: inline-block;
+    margin-left: 2px; 
+    width: 8px; 
+    height: 1em; 
+    background-color: limegreen;
+    filter: blur(1.5px);
+    animation: blink-caret 1s step-end infinite;
+}
+
+@keyframes blink-caret {
+    50% { opacity: 0; }
+}
+
+
+/* remembr u can add styles for buttons and input fields HERE*/
